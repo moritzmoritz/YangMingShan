@@ -31,7 +31,6 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
 @property (nonatomic, weak) AVCaptureSession *session;
 @property (nonatomic, strong) NSArray *collectionItems;
 @property (nonatomic, strong) NSDictionary *currentCollectionItem;
-@property (nonatomic, strong) NSMutableArray *selectedPhotos;
 @property (nonatomic, strong) UIBarButtonItem *doneItem;
 @property (nonatomic, assign) BOOL needToSelectFirstPhoto;
 @property (nonatomic, assign) CGSize cellPortraitSize;
