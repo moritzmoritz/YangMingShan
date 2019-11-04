@@ -237,6 +237,8 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
             PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
             PHAsset *asset = fetchResult[indexPath.item-1];
             [self.selectedPhotos addObject:asset];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
+            
             [self finishPickingPhotos:nil];
         } else {
             PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
@@ -303,6 +305,9 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
     }
 
     [self.selectedPhotos removeObject:asset];
+    
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
+    
     if (self.selectedPhotos.count == 0) {
         self.doneItem.enabled = NO;
     }
