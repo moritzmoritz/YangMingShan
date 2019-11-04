@@ -68,6 +68,9 @@
 - (void)photoPickerViewControllerDidReceiveCameraAccessDenied:(YMSPhotoPickerViewController *)picker;
 
 @optional
+
+- (void)photoPickerViewControllerImagesChanged:(YMSPhotoPickerViewController *)picker;
+
 /**
  * @brief Invoked when view controller finish picking single image from camera or photo album. The picker does not dismiss itself; the client dismisses it in this callback.
  *

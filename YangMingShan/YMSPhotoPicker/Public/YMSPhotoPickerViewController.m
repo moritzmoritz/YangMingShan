@@ -237,7 +237,13 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
             PHFetchResult *fetchResult = self.currentCollectionItem[@"assets"];
             PHAsset *asset = fetchResult[indexPath.item-1];
             [self.selectedPhotos addObject:asset];
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"picker_imagesChanged" object:NULL]];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
+            
+            if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged)]) {
+                [self.delegate photoPickerViewControllerImagesChanged:self];
+            }
             
             [self finishPickingPhotos:nil];
         } else {
@@ -306,7 +312,12 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
 
     [self.selectedPhotos removeObject:asset];
     
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"picker_imagesChanged" object:NULL]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
+    
+    if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged)]) {
+        [self.delegate photoPickerViewControllerImagesChanged:self];
+    }
     
     if (self.selectedPhotos.count == 0) {
         self.doneItem.enabled = NO;
