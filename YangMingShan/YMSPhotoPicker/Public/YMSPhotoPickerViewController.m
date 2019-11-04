@@ -241,7 +241,7 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
             
-            if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged)]) {
+            if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged:)]) {
                 [self.delegate photoPickerViewControllerImagesChanged:self];
             }
             
@@ -315,7 +315,7 @@ static const CGFloat YMSPhotoFetchScaleResizingRatio = 0.75;
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"picker_imagesChanged" object:NULL]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"picker_imagesChanged" object:NULL];
     
-    if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged)]) {
+    if ([self.delegate respondsToSelector:@selector(photoPickerViewControllerImagesChanged:)]) {
         [self.delegate photoPickerViewControllerImagesChanged:self];
     }
     
